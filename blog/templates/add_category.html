@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create A New Blog Category!{% endblock %}
+
+{% block content %}
+    <h1>Add Category...</h1><hr/>
+    <br/>
+    <div class="mb-3">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% comment %} <div class="mb-3">
+                <input type="text" class="form-control" name="add_category" placeholder="Add Category">
+            </div> {% endcomment %}
+            <br/>
+            <button class="btn btn-success">Add Category</button>
+            <a href="{% url 'blog:index' %}" class="btn btn-success">Back</a>
+        </form>
+    </div>
+{% endblock %}

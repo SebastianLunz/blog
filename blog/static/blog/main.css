@@ -1,0 +1,18 @@
+a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #157347;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #157347;
+}
+
+.upper-case {
+    font-size: 14px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}

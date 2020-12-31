@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Posts</h1>
+<ul><hr/>
+    {% for post in object_list %}
+        <li>
+            <a href="{% url 'blog:article-detail' post.pk %}" class="link-success">
+                {{ post.title }}
+            </a>
+            - <a href="{% url 'blog:category' post.category|slugify %}" class="link-success upper-case">
+                {{ post.category }}
+            </a>
+
+            <br/>
+            {{ post.snippet|safe|linebreaks }}
+            {% comment %} {{ post.body|slice:":200"|safe|linebreaks }} {% endcomment %}
+            
+            <small>
+                {{ post.author.first_name }} 
+                {{ post.author.last_name }}
+                - {{ post.post_date|date:"F j, Y" }}
+                {% comment %} <a href="{% url 'blog:update-post' post.pk %}" class="link-success">
+                    (Edit)
+                </a>
+                <a href="{% url 'blog:delete-post' post.pk %}" class="link-success">
+                    (Delete)
+                </a> {% endcomment %}
+            </small>
+            <hr/>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

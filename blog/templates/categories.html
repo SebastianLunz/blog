@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if category_post %}
+    <h1>{{ categories }}</h1>
+    <ul><hr/>
+        {% for post in category_post %}
+            <li>
+                <a href="{% url 'blog:article-detail' post.pk %}" class="link-success">
+                    {{ post.title }}
+                </a>
+                {% comment %} {{ post.body|slice:":200"|safe|linebreaks }} {% endcomment %}
+                {{ post.snippet|safe|linebreaks }}
+                <small>
+                {{ post.author.first_name }} 
+                {{ post.author.last_name }}
+                - {{ post.post_date }}
+                {% if user.is_auyhenticated %}
+                    - <a href="{% url 'blog:update-post' post.pk %}" class="link-success">
+                        (Edit)
+                    </a>
+                    <a href="{% url 'blog:delete-post' post.pk %}" class="link-success">
+                        (Delete)
+                    </a>
+                {% endif %}
+                </small>
+                <hr/>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h2>Sorry this page doesn't exist...</h2>
+{% endif %}
+<a href="{% url 'blog:index' %}" class="btn btn-success">Back</a>
+{% endblock %}
