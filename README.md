@@ -13,4 +13,3 @@ A blog app created with Django, Bootstrap and SQLite3
 * Add/Delete/Edit posts
 * Add/Delete/Edit category
 * Add users
-
