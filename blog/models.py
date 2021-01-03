@@ -11,7 +11,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('blog:category_list')
+        return reverse('blog:category-list')
 
 
 class Post(models.Model):
@@ -28,7 +28,7 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author)
 
     def get_absolute_url(self):
-        return reverse('blog:article_details')
+        return reverse('blog:article-detail', args=[str(self.id)])
 
 
 class Comment(models.Model):
