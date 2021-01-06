@@ -5,13 +5,13 @@ from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('blog:category-list')
+        return reverse('blog:category', args=[str(self.id)])
 
 
 class Post(models.Model):
@@ -21,7 +21,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = RichTextField(blank=True, null=True, default='')
     post_date = models.DateTimeField(auto_now_add=True)
-    category = models.CharField(max_length=255, default='')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     snippet = models.CharField(max_length=255, default='')
 
     def __str__(self):

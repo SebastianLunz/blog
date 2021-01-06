@@ -3,14 +3,13 @@
 
 {% block content %}
 {% if category_post %}
-    <h1>{{ categories }}</h1>
+    <h1>{{ category.name }}</h1>
     <ul><hr/>
         {% for post in category_post %}
             <li>
                 <a href="{% url 'blog:article-detail' post.pk %}" class="link-success">
                     {{ post.title }}
                 </a>
-                {% comment %} {{ post.body|slice:":200"|safe|linebreaks }} {% endcomment %}
                 {{ post.snippet|safe|linebreaks }}
                 <small>
                 {{ post.author.first_name }} 
@@ -30,7 +29,7 @@
         {% endfor %}
     </ul>
 {% else %}
-    <h2>Sorry this page doesn't exist...</h2>
+    <h2>There are no posts in the "{{ category.name }}" category yet...</h2><br/>
 {% endif %}
 <a href="{% url 'blog:index' %}" class="btn btn-success">Back</a>
 {% endblock %}

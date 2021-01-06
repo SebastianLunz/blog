@@ -10,9 +10,6 @@
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            {% comment %} <div class="mb-3">
-                <input type="text" class="form-control" name="add_category" placeholder="Add Category">
-            </div> {% endcomment %}
             <br/>
             <button class="btn btn-success">Add Category</button>
             <a href="{% url 'blog:index' %}" class="btn btn-success">Back</a>

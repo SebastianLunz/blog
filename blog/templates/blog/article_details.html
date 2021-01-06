@@ -33,14 +33,12 @@
         <a href="{% url 'blog:add-comment' post.pk %}">Add Comment</a>
         <br/><br/>
         {% for comment in post.comments.all %}
-            
             {{ comment.body }}
             <br/>
             <strong>
                 {{ comment.name }} -
                 {{ comment.date_added }}
             </strong>
-            
             <br/><br/>
         {% endfor %}
     {% endif %}
