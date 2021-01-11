@@ -3,9 +3,15 @@
 
 {% block content %}
     <h1>Blog Categories</h1><hr/>
-    {% for item in cat_menu_list %}
+    {% for category in object_list %}
         <h4>
-            <a class="dropdown-item link-success upper-case" href="{% url 'blog:category' item|slugify %}">{{ item }}</a>
+            <a class="link-success" href="{% url 'blog:category' category.pk %}">{{ category }}</a>
         </h4>
     {% endfor %}
+    <hr><br/>
+    <a href="{% url 'blog:index' %}" class="btn btn-success">Back</a>
+    <br/><br/>
+
+    {{ object_list }}
+
 {% endblock %}

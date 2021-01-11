@@ -31,5 +31,5 @@
 {% else %}
     <h2>There are no posts in the "{{ category.name }}" category yet...</h2><br/>
 {% endif %}
-<a href="{% url 'blog:index' %}" class="btn btn-success">Back</a>
+<a href="{% url 'blog:category-list' %}" class="btn btn-success">Back</a>
 {% endblock %}

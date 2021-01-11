@@ -48,13 +48,16 @@ class AddCommentView(CreateView):
         form.instance.post_id = self.kwargs['pk']
         return super().form_valid(form)
 
-    success_url = reverse_lazy('blog:index')
+    def get_success_url(self):
+        return reverse('blog:article-detail', args=[self.kwargs['pk']])
 
 
 class AddCategoryView(CreateView):
     model = Category
     template_name = "blog/add_category.html"
     fields = '__all__'
+
+    success_url = reverse_lazy('blog:category-list')
 
 
 class UpdatePostView(UpdateView):

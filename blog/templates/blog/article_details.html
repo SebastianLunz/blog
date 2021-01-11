@@ -35,10 +35,10 @@
         {% for comment in post.comments.all %}
             {{ comment.body }}
             <br/>
-            <strong>
+            <strong><small>
                 {{ comment.name }} -
                 {{ comment.date_added }}
-            </strong>
+            </small></strong>
             <br/><br/>
         {% endfor %}
     {% endif %}

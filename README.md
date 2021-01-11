@@ -11,5 +11,5 @@ A blog app created with Django, Bootstrap and SQLite3
 ![Screen of logged user](./images/screen_logged.png)
 #### Additional functionality (enabled from the website) :
 * Add/Delete/Edit posts
-* Add/Delete/Edit category
+* Add category
 * Add users
