@@ -5,7 +5,7 @@
     <h1>Blog Categories</h1><hr/>
     {% for category in object_list %}
         <h4>
-            <a class="link-success" href="{% url 'blog:category' category.pk %}">{{ category }}</a>
+            <a class="link-success" href="{% url 'blog:category' category.pk %}">{{ category|lower|capfirst }}</a>
         </h4>
     {% endfor %}
     <hr><br/>

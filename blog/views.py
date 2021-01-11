@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category, Comment
-from .forms import PostForm, UpdateForm, CommentForm
+from .forms import PostForm, CategoryForm, UpdateForm, CommentForm
 from django.urls import reverse_lazy, reverse
 
 
@@ -54,8 +54,8 @@ class AddCommentView(CreateView):
 
 class AddCategoryView(CreateView):
     model = Category
+    form_class = CategoryForm
     template_name = "blog/add_category.html"
-    fields = '__all__'
 
     success_url = reverse_lazy('blog:category-list')
 

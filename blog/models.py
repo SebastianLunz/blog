@@ -5,16 +5,23 @@ from django.urls import reverse
 from ckeditor.fields import RichTextField
 from django.core.exceptions import ValidationError
 
+
 class Category(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
     def clean(self):
-        the_names_lower = Category.objects.annotate(name_lower=Lower('name'))
-        for the_name_lower in the_names_lower:
-            if self.name.lower() == the_name_lower:
-                raise ValidationError('Category exist!')
+        categories = Category.objects.annotate(name_lower=Lower('name'))
 
-        return self.name.lower()
+        errors = {}
+
+        for category in categories:
+            if self.name.lower() == category.name_lower:
+                errors['name'] = ValidationError(
+                    f'Category "{category.name_lower}" already exist. '
+                    'Try something new...'
+                )
+        if errors:
+            raise ValidationError(errors)
 
     def __str__(self):
         return self.name
