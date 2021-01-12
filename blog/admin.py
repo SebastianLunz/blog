@@ -45,8 +45,8 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_filter = ["name".lower()]
-    search_fields = ["name".lower()]
+    list_filter = ["name"]
+    search_fields = ["name"]
 
 
 admin.site.register(Post, PostAdmin)
